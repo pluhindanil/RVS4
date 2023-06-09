@@ -86,23 +86,23 @@ class ExhibitionItemResource(Resource):
             return {'message': 'Exhibition not found'}, 404
 
 
-@api.route('/exhibitions/<int:id>/participants')
-@api.param('id', 'The exhibition identifier')
-class ExhibitionParticipantsResource(Resource):
-    @api.doc('update_participants')
-    @api.expect(participants_model)
-    @api.marshal_with(exhibition_model)
-    def patch(self, id):
-        '''Update the participants of an exhibition'''
-        participants_to_add = api.payload.get('participants')
-
-        exhibition = Exhibition.query.get(id)
-        if exhibition:
-            exhibition.participants += participants_to_add
-            db.session.commit()
-            return exhibition
-        else:
-            return {'message': 'Exhibition not found'}, 404
+# @api.route('/exhibitions/<int:id>/participants')
+# @api.param('id', 'The exhibition identifier')
+# class ExhibitionParticipantsResource(Resource):
+#     @api.doc('update_participants')
+#     @api.expect(participants_model)
+#     @api.marshal_with(exhibition_model)
+#     def patch(self, id):
+#         '''Update the participants of an exhibition'''
+#         participants_to_add = api.payload.get('participants')
+#
+#         exhibition = Exhibition.query.get(id)
+#         if exhibition:
+#             exhibition.participants += participants_to_add
+#             db.session.commit()
+#             return exhibition
+#         else:
+#             return {'message': 'Exhibition not found'}, 404
 
 if __name__ == '__main__':
     with app.app_context():
