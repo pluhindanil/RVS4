@@ -1,48 +1,48 @@
 openapi: 3.0.0
 info:
-  title: Exhibition API
+  title: Computer components API
   version: 1.0.0
 servers:
   - url: /api
 paths:
   /exhibitions:
     get:
-      summary: List all exhibitions
+      summary: List all components
       responses:
         '200':
           description: OK
     post:
-      summary: Create a new exhibition
+      summary: Create a new component
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Exhibition'
+              $ref: '#/components/schemas/Computer'
       responses:
         '201':
           description: Created
   /exhibitions/{id}:
     put:
-      summary: Update an exhibition
+      summary: Update a component
       parameters:
         - in: path
           name: id
           required: true
           schema:
             type: integer
-          description: The exhibition identifier
+          description: The component identifier
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Exhibition'
+              $ref: '#/components/schemas/Computer'
       responses:
         '200':
           description: OK
         '404':
-          description: Exhibition not found
+          description: Components not found
     delete:
       summary: Delete an exhibition
       parameters:
@@ -51,12 +51,12 @@ paths:
           required: true
           schema:
             type: integer
-          description: The exhibition identifier
+          description: The components identifier
       responses:
         '204':
           description: No Content
         '404':
-          description: Exhibition not found
+          description: Component not found
 components:
   schemas:
     Exhibition:
@@ -75,6 +75,7 @@ components:
           type: integer
       required:
         - name
-        - date
-        - location
-        - participants
+        - catergory
+        - price
+
+
